@@ -13,4 +13,5 @@ class Player extends CI_Model {
         parent::__construct();
     }
 
+
 }
