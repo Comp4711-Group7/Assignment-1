@@ -3,6 +3,6 @@
 <h3>Player's Profile</h3>
 
 {playerprofile}
-    Name: {Player} </br>
+    Name: {Player}
     Cash: {Cash}
 {/playerprofile}
