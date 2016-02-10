@@ -33,7 +33,6 @@ class Player extends Application {
         $this->db->where('Player', $name);
         $query = $this->db->get();
 
-        echo "hello";
         $this->data['playerprofile'] = $query->result_array();
         $this->data['pagebody'] = 'playerprofile';	// this is the view we want shown
         $this->render();
