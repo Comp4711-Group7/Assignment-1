@@ -21,4 +21,13 @@ class Player extends CI_Model {
         return $query->result_array();
     }
 
+    public function getPlayerInfo($name){
+        // Query gets player with specific name
+        $this->db->select('*');
+        $this->db->from('players');
+        $this->db->where('Player', $name);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }

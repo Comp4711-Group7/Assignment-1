@@ -20,7 +20,24 @@ if (!defined('APPPATH'))
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="assets/css/custom.css" rel="stylesheet">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
@@ -34,18 +51,18 @@ if (!defined('APPPATH'))
             </button>
             <a class="navbar-brand" href="/">Stock Ticker</a>
         </div>
-<!--        <div class="collapse navbar-collapse" id="myNavbar">-->
+        <div class="collapse navbar-collapse" id="myNavbar">
 <!--            <ul class="nav navbar-nav">-->
 <!--                <li class="active"><a href="#">Home</a></li>-->
 <!--                <li><a href="#">About</a></li>-->
 <!--                <li><a href="#">Projects</a></li>-->
 <!--                <li><a href="#">Contact</a></li>-->
 <!--            </ul>-->
-<!--            <ul class="nav navbar-nav navbar-right">-->
-<!--                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
 <div class="container-fluid text-center">
