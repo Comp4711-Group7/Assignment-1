@@ -34,6 +34,12 @@ class Player extends Application {
         $this->db->where('Player', $name);
         $query = $this->db->get();
 
+        $this->db->select('quantity');
+        $this->db->from('transactions');
+        $this->db->where('Player', $name);
+        $transaction = $this->db->get();
+
+        $this->data['transactions'] = $transaction->result_array();
         $this->data['playerprofile'] = $query->result_array();
         $this->data['pagebody'] = 'playerprofile';	// this is the view we want shown
         $this->render();
