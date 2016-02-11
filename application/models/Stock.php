@@ -19,4 +19,36 @@ class Stock extends CI_Model {
         return $query->result_array();
     }
 
+    /**
+     * @param $code
+     * @return mixed
+     */
+    public function getTransactions($code){
+        $this->db->select("*");
+        $this->db->from("transactions");
+        $this->db->where("Stock", $code);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    /**
+     * @param $code
+     * @return mixed
+     */
+    public function getMovements($code){
+        $this->db->select("*");
+        $this->db->from("movements");
+        $this->db->where("Code", $code);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function getSpecificStock($code){
+        $this->db->select("*");
+        $this->db->from("stocks");
+        $this->db->where("Code", $code);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }
