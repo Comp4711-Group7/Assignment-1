@@ -32,6 +32,7 @@ class Players extends Application {
     public function getPlayerInfo($name) {
         $this->load->model('player');
         $this->data['playerprofile']  = $this->player->getPlayerInfo($name);
+        $this->data['playerholdings'] = $this->player->getPlayerHoldings($name);
         $this->data['pagebody'] = 'playerprofile';	// this is the view we want shown
         $this->render();
     }
