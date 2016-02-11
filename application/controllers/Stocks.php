@@ -13,6 +13,7 @@ class Stocks extends Application {
     {
         $this->data["stocks"] = $this->getStocks();
         $this->data['pagebody'] = 'stocks';	// this is the view we want shown
+        $this->data['title'] = 'Stock\'s List';
         $this->render();
     }
     /* this grabs all the stocks to display on the stocks page */ 
@@ -28,7 +29,8 @@ class Stocks extends Application {
         $this->db->where("Name", $name);
         
         $query = $this->db->get();
-        
+
+
         $this->data['stockprofile'] = $query->result_array();
         $this->data['pagebody'] = 'stockprofile';
         $this->render();
