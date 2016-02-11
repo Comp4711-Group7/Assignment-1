@@ -13,6 +13,7 @@ class Player extends Application {
     {
         $this->data['players'] = $this->getPlayers();  // When the page loads, list all players in db
         $this->data['pagebody'] = 'players';	// this is the view we want shown
+        $this->data['title'] = 'Player\'s List';
         $this->render();
     }
 
@@ -28,18 +29,12 @@ class Player extends Application {
      * @param $name Takes a name and returns a view with that player's profile
      */
     public function getPlayerInfo($name) {
-        // Query gets player with specific name
+       // Query gets player with specific name
         $this->db->select('*');
         $this->db->from('players');
         $this->db->where('Player', $name);
         $query = $this->db->get();
 
-        $this->db->select('quantity');
-        $this->db->from('transactions');
-        $this->db->where('Player', $name);
-        $transaction = $this->db->get();
-
-        $this->data['transactions'] = $transaction->result_array();
         $this->data['playerprofile'] = $query->result_array();
         $this->data['pagebody'] = 'playerprofile';	// this is the view we want shown
         $this->render();

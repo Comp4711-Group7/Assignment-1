@@ -1,5 +1,31 @@
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-<hr>
-            <h3>Test</h3>
-            <p>Lorem ipsum...</p>
+<h2 style="text-align:center">Stocks</h2>
+<table style="width:100%">
+    <tr>
+        <th>STOCK NAME</th>
+        <th>VALUE</th>
+    </tr>
+    {stocks}
+    <tr>
+        <td><a href="#">{Name}</a></td>
+        <td>{Value}</td>
+    </tr>
+    {/stocks}
+</table>
+
+
+<h2 style="text-align:center">Players</h2>
+<table style="width:100%">
+    <tr>
+        <th>PLAYER</th>
+        <th>CASH</th>
+        <th>EQUITY</th>
+    </tr>
+    {players}
+    <tr>
+        <td><a href="players/{Player}">{Player}</a></td>
+        <td>{Cash}</td>
+        <td>{Equity}</td>
+    </tr>
+    {/players}
+</table>

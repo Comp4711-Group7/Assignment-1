@@ -32,28 +32,28 @@ if (!defined('APPPATH'))
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand" href="/">Stock Ticker</a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div>
-    </div>
+<!--        <div class="collapse navbar-collapse" id="myNavbar">-->
+<!--            <ul class="nav navbar-nav">-->
+<!--                <li class="active"><a href="#">Home</a></li>-->
+<!--                <li><a href="#">About</a></li>-->
+<!--                <li><a href="#">Projects</a></li>-->
+<!--                <li><a href="#">Contact</a></li>-->
+<!--            </ul>-->
+<!--            <ul class="nav navbar-nav navbar-right">-->
+<!--                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
 </nav>
 
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <p><a href="#">Link</a></p>
-            <p><a href="#">Link</a></p>
-            <p><a href="#">Link</a></p>
+<!--            <p><a href="#">Link</a></p>-->
+<!--            <p><a href="#">Link</a></p>-->
+<!--            <p><a href="#">Link</a></p>-->
         </div>
         <div class="col-sm-8 text-left">
 
@@ -61,19 +61,19 @@ if (!defined('APPPATH'))
             {content}
         </div>
         <div class="col-sm-2 sidenav">
-            <div class="well">
-                <a href="/stocks" ><button style="width: 100% ; height: 100%;">STOCKS</button></a>
-            </div>
-            <div class="well">
-                <a href="/players" ><button style="width: 100% ; height: 100%;">PLAYERS</button></a>
-            </div>
+<!--            <div class="well">-->
+<!--                <a href="/stocks" ><button style="width: 100% ; height: 100%;">STOCKS</button></a>-->
+<!--            </div>-->
+<!--            <div class="well">-->
+<!--                <a href="/players" ><button style="width: 100% ; height: 100%;">PLAYERS</button></a>-->
+<!--            </div>-->
         </div>
     </div>
 </div>
 
-<footer id="footer" class="container-fluid text-center">
-    <p>Footer Text</p>
-</footer>
+<!--<footer id="footer" class="container-fluid text-center">-->
+<!--    <p>Footer Text</p>-->
+<!--</footer>-->
 
 </body>
 </html>
