@@ -13,4 +13,10 @@ class Stock extends CI_Model {
         parent::__construct();
     }
 
+    /* this grabs all the stocks to display on the stocks page */
+    public function getStocks(){
+        $query = $this->db->get("stocks");
+        return $query->result_array();
+    }
+
 }

@@ -13,5 +13,12 @@ class Player extends CI_Model {
         parent::__construct();
     }
 
+    /**
+     * @return array of all of the players in the database
+     */
+    public function getPlayers() {
+        $query = $this->db->get('players');
+        return $query->result_array();
+    }
 
 }
