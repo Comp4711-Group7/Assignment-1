@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Player extends Application {
+class Players extends Application {
 
 
     function __construct()
@@ -30,13 +30,7 @@ class Player extends Application {
      * @param $name Takes a name and returns a view with that player's profile
      */
     public function getPlayerInfo($name) {
-//       // Query gets player with specific name
-//        $this->db->select('*');
-//        $this->db->from('players');
-//        $this->db->where('Player', $name);
-//        $query = $this->db->get();
 
-        $this->data['playerprofile'] = $query->result_array();
         $this->data['pagebody'] = 'playerprofile';	// this is the view we want shown
         $this->render();
     }
