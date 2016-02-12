@@ -18,8 +18,8 @@ class Authentication extends Application {
         
         public function login(){
             $newdata = array(
-                   'username'  => 'johndoe',
-                   'email'     => 'johndoe@some-site.com',
+                   'username'  => 'Henry',
+                   'email'     => 'henry@gmail.com',
                    'logged_in' => TRUE
                );
 

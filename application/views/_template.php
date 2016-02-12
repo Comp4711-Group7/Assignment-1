@@ -26,7 +26,10 @@ if (!defined('APPPATH'))
             border-collapse: collapse;
             width: 100%;
         }
-
+        .username {
+            
+            color: gray;
+        }
         th, td {
             text-align: left;
             padding: 8px;
@@ -69,7 +72,11 @@ if (!defined('APPPATH'))
                 <?php
                 if($logged_in == TRUE){
                         ?>
-                        <li><a href="/authentication/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                         
+                        <li>
+                            <span class="username">{username}</span>
+                            <a href="/authentication/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+                        </li>
                         <?php
                     }
                     else {
