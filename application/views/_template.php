@@ -70,6 +70,7 @@ if (!defined('APPPATH'))
 <!--            </ul>-->
             <ul class="nav navbar-nav navbar-right">
                 <?php
+                // check if the user is logged in to display logout button 
                 if($logged_in == TRUE){
                         ?>
                          
@@ -78,7 +79,7 @@ if (!defined('APPPATH'))
                             <a href="/authentication/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
                         </li>
                         <?php
-                    }
+                    }// display login button if user is not logged in
                     else {
                         ?>
                         <li><a href="/authentication/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
