@@ -1,6 +1,7 @@
-{stockprofile}
-<h3 style="text-align:center">{Name}</h3>
-{/stockprofile}
+
+
+<br>
+<div style="text-align: center">{stocksdropdown}</div>
 
 <h4>Movements</h4>
 
@@ -37,4 +38,4 @@
     {/stocktransactions}
 </table>
 
-{stocksdropdown}
+

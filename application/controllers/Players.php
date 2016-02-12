@@ -34,7 +34,7 @@ class Players extends Application {
         $this->data['playerprofile'] = $this->player->getPlayerTransaction($name);
         //$this->data['playersholding'] = $this->player->getPlayerTransaction($name);
         $this->data['user'] = $name;
-        $this->data['title'] = 'Player\'s List';
+        $this->data['title'] = 'Player\'s Profile';
         $this->render();
     }
 
