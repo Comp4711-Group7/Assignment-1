@@ -30,4 +30,24 @@ class Player extends CI_Model {
         return $query->result_array();
     }
 
+    public function getPlayerHoldings($name) {
+//        $this->db->select('*');
+//        $this->db->from('transactions');
+//        $this->db->where('Player', $name);
+//
+//
+//        $this->db->select_sum('Quantity');
+//        $this->db->from('transactions');
+//        $this->db->where('Player', $name);
+//        $this->db->where('Trans', 'sell');
+        $this->db->select('*');
+        $this->db->from('holdings');
+        $this->db->where('Player', $name);
+
+        $query = $this->db->get();
+
+
+
+        return $query->result_array();
+    }
 }

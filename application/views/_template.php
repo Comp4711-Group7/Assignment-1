@@ -59,8 +59,8 @@ if (!defined('APPPATH'))
 <!--                <li><a href="#">Contact</a></li>-->
 <!--            </ul>-->
             <ul class="nav navbar-nav navbar-right">
-                <?php 
-                    if($logged_in == TRUE){
+                <?php
+                if($logged_in == TRUE){
                         ?>
                         <li><a href="/authentication/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                         <?php
