@@ -31,13 +31,22 @@ class Players extends Application {
      */
     public function getPlayerInfo($name) {
         $this->load->model('player');
+
         $this->data['playerprofile']  = $this->player->getPlayerInfo($name);
         $this->data['playerholdings'] = $this->player->getPlayerHoldings($name);
+        $this->load->helper('form');
+
         $this->data['pagebody'] = 'playerprofile';	// this is the view we want shown
+        $js = 'id="shirts" onChange="nameChange(this.value);"';
+        $this->data['playerdropdown'] = form_dropdown('player',$this->player->getPlayerNames(), $name, $js);
+        $this->data['playerprofile'] = $this->player->getPlayerTransaction($name);
+        //$this->data['playersholding'] = $this->player->getPlayerTransaction($name);
+        $this->data['user'] = $name;
+        $this->data['title'] = 'Player\'s List';
         $this->render();
     }
 
-    public function getMovesments() {
+    public function getMovements() {
 
     }
 }
