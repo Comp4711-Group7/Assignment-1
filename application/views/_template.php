@@ -19,6 +19,7 @@ if (!defined('APPPATH'))
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
     <link href="assets/css/custom.css" rel="stylesheet">
     <style>
         table {
@@ -38,6 +39,12 @@ if (!defined('APPPATH'))
             color: white;
         }
     </style>
+    <script>
+        function nameChange(name) {
+            console.log(name)
+            window.location.replace("/players/" + name);
+        }
+    </script>
 </head>
 <body>
 
