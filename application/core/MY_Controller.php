@@ -33,6 +33,8 @@ class Application extends CI_Controller {
 	 */
 	function render()
 	{
+		$this->data['logged_in'] = $this->session->userdata('logged_in');
+		$this->data['username'] = $this->session->userdata('username');
 		// These two lines are from Jim's example.
 		//$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
