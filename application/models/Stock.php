@@ -51,4 +51,16 @@ class Stock extends CI_Model {
         return $query->result_array();
     }
 
+    public function getStocksNames(){
+        $this->db->select('Name')->from('stocks');
+        $query = $this->db->get();
+        $init_result = $query->result_array();
+        $result = array();
+        foreach($init_result as $value){
+            foreach($value as $name)
+                $result[$name] = $name;
+        }
+        return $result;
+    }
+
 }

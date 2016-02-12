@@ -40,9 +40,9 @@ if (!defined('APPPATH'))
         }
     </style>
     <script>
-        function nameChange(name) {
+        function nameChange(link,name) {
             console.log(name)
-            window.location.replace("/players/" + name);
+            window.location.replace("/" + link + "/" + name);
         }
     </script>
 </head>

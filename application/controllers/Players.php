@@ -18,14 +18,6 @@ class Players extends Application {
         $this->render();
     }
 
-//    /**
-//     * @return array of all of the players in the database
-//     */
-//    public function getPlayers() {
-//        $query = $this->db->get('players');
-//        return $query->result_array();
-//    }
-
     /**
      * @param $name Takes a name and returns a view with that player's profile
      */
@@ -37,7 +29,7 @@ class Players extends Application {
         $this->load->helper('form');
 
         $this->data['pagebody'] = 'playerprofile';	// this is the view we want shown
-        $js = 'id="shirts" onChange="nameChange(this.value);"';
+        $js = 'id="shirts" onChange="nameChange(&quot;players&quot;,this.value);"';
         $this->data['playerdropdown'] = form_dropdown('player',$this->player->getPlayerNames(), $name, $js);
         $this->data['playerprofile'] = $this->player->getPlayerTransaction($name);
         //$this->data['playersholding'] = $this->player->getPlayerTransaction($name);
@@ -46,7 +38,5 @@ class Players extends Application {
         $this->render();
     }
 
-    public function getMovements() {
 
-    }
 }
