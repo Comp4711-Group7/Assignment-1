@@ -30,12 +30,19 @@ class Players extends Application {
      * @param $name Takes a name and returns a view with that player's profile
      */
     public function getPlayerInfo($name) {
-
+        $this->load->model('player');
+        $this->load->helper('form');
         $this->data['pagebody'] = 'playerprofile';	// this is the view we want shown
+        $js = 'id="shirts" onChange="nameChange(this.value);"';
+        $this->data['playerdropdown'] = form_dropdown('player',$this->player->getPlayerNames(), $name, $js);
+        $this->data['playerprofile'] = $this->player->getPlayerTransaction($name);
+        $this->data['playersholding'] = $this->player->getPlayerTransaction($name);
+        $this->data['user'] = $name;
+        $this->data['title'] = 'Player\'s List';
         $this->render();
     }
 
-    public function getMovesments() {
+    public function getMovements() {
 
     }
 }
