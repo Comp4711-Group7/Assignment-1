@@ -31,6 +31,12 @@ class Player extends CI_Model {
         }
         return $result;
     }
+
+    /**
+     * return array of specific player info
+     * @param $name
+     * @return mixed
+     */
     public function getPlayerInfo($name){
         // Query gets player with specific name
         $this->db->select('*');
@@ -40,16 +46,13 @@ class Player extends CI_Model {
         return $query->result_array();
     }
 
+    /**
+     * Get the holdings of specific player
+     * @param $name
+     * @return mixed
+     */
     public function getPlayerHoldings($name) {
-//        $this->db->select('*');
-//        $this->db->from('transactions');
-//        $this->db->where('Player', $name);
-//
-//
-//        $this->db->select_sum('Quantity');
-//        $this->db->from('transactions');
-//        $this->db->where('Player', $name);
-//        $this->db->where('Trans', 'sell');
+
         $this->db->select('*');
         $this->db->from('holdings');
         $this->db->where('Player', $name);
@@ -59,6 +62,11 @@ class Player extends CI_Model {
         return $query->result_array();
     }
 
+    /**
+     * get the selected players transactions
+     * @param $name
+     * @return mixed
+     */
     public function getPlayerTransaction($name) {
         $this->db->select('*');
         $this->db->from('transactions');

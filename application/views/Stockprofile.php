@@ -36,3 +36,5 @@
     </tr>
     {/stocktransactions}
 </table>
+
+{stocksdropdown}
