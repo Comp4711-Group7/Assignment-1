@@ -1,6 +1,10 @@
 <hr>
+
+<br>
+<div style="text-align: center">{playerdropdown}</div>
+
 <h3>Transactions</h3>
-{playerdropdown}
+
 
 <table style="width:100%">
     <tr>
@@ -34,3 +38,4 @@
     </tr>
     {/playerholdings}
 </table>
+

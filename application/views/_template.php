@@ -19,29 +19,7 @@ if (!defined('APPPATH'))
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-    <link href="assets/css/custom.css" rel="stylesheet">
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        .username {
-            
-            color: gray;
-        }
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even){background-color: #f2f2f2}
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-    </style>
+    <link href="../assets/css/custom.css" rel="stylesheet">
     <script>
         function nameChange(link,name) {
             console.log(name)
@@ -72,12 +50,13 @@ if (!defined('APPPATH'))
                 <?php
                 if($logged_in == TRUE){
                         ?>
-                         
-                        <li>
-                            <span class="username">{username}</span>
-                            <a href="/authentication/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
-                        </li>
-                        <?php
+
+                    <li style="margin-top: 15px; color: white;"><span class="username">{username}</span></li>
+                            <li><a href="/authentication/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+
+
+
+                    <?php
                     }
                     else {
                         ?>
