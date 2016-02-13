@@ -31,7 +31,6 @@ class Players extends Application {
         $js = 'id="shirts" onChange="nameChange(&quot;players&quot;,this.value);"';
         $this->data['playerdropdown'] = form_dropdown('player',$this->player->getPlayerNames(), $name, $js);
         $this->data['playerprofile'] = $this->player->getPlayerTransaction($name);
-        //$this->data['playersholding'] = $this->player->getPlayerTransaction($name);
         $this->data['user'] = $name;
         $this->data['title'] = 'Player\'s Profile';
         $this->render();
