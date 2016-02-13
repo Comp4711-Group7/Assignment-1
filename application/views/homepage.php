@@ -23,11 +23,13 @@
     <tr>
         <th>PLAYER</th>
         <th>CASH</th>
+        <th>EQUITY</th>
     </tr>
     {players}
     <tr>
         <td><a href="players/{Player}">{Player}</a></td>
         <td>{Cash}</td>
+        <td>{Equity}</td>
     </tr>
     {/players}
 </table>
