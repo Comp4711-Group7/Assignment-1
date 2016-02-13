@@ -7,22 +7,21 @@ class Players extends Application {
     function __construct()
     {
         parent::__construct();
+        $this->load->model('player');
     }
 
     public function index()
     {
-        $this->load->model('player');
-        $this->data['players'] = $this->player->getPlayers();  // When the page loads, list all players in db
-        $this->data['pagebody'] = 'players';	// this is the view we want shown
-        $this->data['title'] = 'Player\'s List';
-        $this->render();
+        if($this->session->userdata('logged_in')){
+            $this->getPlayerInfo($this->session->userdata['username']);
+        }
     }
 
     /**
      * @param $name Takes a name and returns a view with that player's profile
      */
     public function getPlayerInfo($name) {
-        $this->load->model('player');
+
 
         $this->data['playerprofile']  = $this->player->getPlayerInfo($name);
         $this->data['playerholdings'] = $this->player->getPlayerHoldings($name);

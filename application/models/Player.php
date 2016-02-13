@@ -68,6 +68,7 @@ class Player extends CI_Model {
      * @return mixed
      */
     public function getPlayerTransaction($name) {
+
         $this->db->select('*');
         $this->db->from('transactions');
         $this->db->where('Player', $name);
