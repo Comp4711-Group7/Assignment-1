@@ -33,6 +33,7 @@ class Application extends CI_Controller {
 	 */
 	function render()
 	{
+                // set the session info to data so it can be accessed
 		$this->data['logged_in'] = $this->session->userdata('logged_in');
 		$this->data['username'] = $this->session->userdata('username');
 		// These two lines are from Jim's example.
