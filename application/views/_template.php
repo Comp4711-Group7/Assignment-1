@@ -38,6 +38,7 @@ if (!defined('APPPATH'))
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">Stock Ticker</a>
+            <a class="navbar-brand" href="../game">Play the game!</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
 <!--            <ul class="nav navbar-nav">-->
