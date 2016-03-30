@@ -22,6 +22,8 @@ class Application extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+                
+                $this->load->helper('url');
 		$this->data = array();
 		$this->data['title'] = 'Dashboard';	// our default title
 		$this->errors = array();
@@ -46,20 +48,20 @@ class Application extends CI_Controller {
 	}
         
         function restrict($roleNeeded = null) {
-            $userRole = $this->session->userdata('userRole');
-                if ($roleNeeded != null) {
-                    if (is_array($roleNeeded)) {
-                        if (!in_array($userRole, $roleNeeded)) {
-                          redirect("/");
-                          return;
-                        }
-                    } 
-                    else if ($userRole != $roleNeeded) {
-                        redirect("/");
-                        return;
-                    }
-                }
-        }
+		$userRole = $this->session->userdata('userRole');
+		if ($roleNeeded != null) {
+			if (is_array($roleNeeded)) {
+				if (!in_array($userRole, $roleNeeded)) {
+					redirect("/");
+					return;
+				}
+			} else if ($userRole != $roleNeeded) {
+				redirect("/");
+				return;
+			}
+		}
+	}
+
         
 
 }
