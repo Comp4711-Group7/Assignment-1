@@ -54,11 +54,14 @@ if (!defined('APPPATH'))
                 ?>
                             <li style="margin-top: 15px; color: white;"><span class="username">{username}</span></li>
                             <li><a href="/auth/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                            
                         <?php
                     }// display login button if user is not logged in
                     else {
                         ?>
+                            
                         <li><a href="/auth"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="/auth/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
                 <?php
                     }
                 ?>
