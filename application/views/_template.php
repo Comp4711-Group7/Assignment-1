@@ -52,12 +52,12 @@ if (!defined('APPPATH'))
                     if($logged_in == TRUE){
                 ?>
                             <li style="margin-top: 15px; color: white;"><span class="username">{username}</span></li>
-                            <li><a href="/authentication/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                            <li><a href="/auth/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                         <?php
                     }// display login button if user is not logged in
                     else {
                         ?>
-                        <li><a href="/authentication/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="/auth"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 <?php
                     }
                 ?>
