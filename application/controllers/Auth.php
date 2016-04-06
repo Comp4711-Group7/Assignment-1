@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /* this controller is used for logging in and logging out, sets session info */
