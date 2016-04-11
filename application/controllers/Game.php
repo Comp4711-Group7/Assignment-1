@@ -11,8 +11,9 @@ class Game extends Application
     function __construct()
     {
         parent::__construct();
-        $this->getStatus();
-        $this->checkRound();
+        $this->restrict(array(ROLE_USER));
+        //$this->getStatus();
+        //$this->checkRound();
     }
 
     public function index() {

@@ -23,7 +23,7 @@ class Application extends CI_Controller {
 	{
 		parent::__construct();
                 
-                $this->load->helper('url');
+		$this->load->helper('url');
 		$this->data = array();
 		$this->data['title'] = 'Dashboard';	// our default title
 		$this->errors = array();
@@ -35,19 +35,60 @@ class Application extends CI_Controller {
 	 */
 	function render()
 	{
-                // set the session info to data so it can be accessed
+		$mychoicesLeft = array('menudata' => $this->makemenu('L'));
+		$mychoicesRight = array('menudata' => $this->makemenu('R'));
+		$this->data['menubarLeft'] = $this->parser->parse('_menubar', $mychoicesLeft, true);
+		$this->data['menubarRight'] = $this->parser->parse('_menubar', $mychoicesRight, true);
+
+		// set the session info to data so it can be accessed
 		$this->data['logged_in'] = $this->session->userdata('logged_in');
 		$this->data['username'] = $this->session->userdata('username');
-		// These two lines are from Jim's example.
-		//$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
-		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
-		// finally, build the browser page!
+		//build the browser page!
+		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 		$this->data['data'] = &$this->data;
 		$this->parser->parse('_template', $this->data);
 	}
+
+	/**
+	 * Make the menu of the navigation bar
+	 * @param $wing LEFT and RIGHT MENU
+	 * @return array
+	 */
+	function makemenu($wing)
+	{
+		$choices = array();
+		$userRole = $this->session->userdata('userRole');
+
+		if($wing == 'L'){
+			$choices[] = array('name' => "Stock Ticker", "class" => "", 'link' => '/');
+
+			if($userRole == 'admin'){
+				$choices[] = array('name' => "Manage", "class" => "",'link' => '/beta');
+				$choices[] = array('name' => "Stocks", "class" => "", 'link' => '/gamma');
+			}
+			if($userRole == 'player'){
+				$choices[] = array('name' => "Play Game", "class" => "",'link' => '/game');
+				$choices[] = array('name' => "Stocks", "class" => "" ,'link' => '/stocks');
+			}
+		}else{
+			if(!$userRole){
+				$choices[] = array('name' => "Login", 'class' => "glyphicon glyphicon-log-in",'link' => '/auth');
+			}
+			if($userRole == 'admin'){
+				$choices[] = array('name' => $this->session->userdata('username'), "class" => "", 'link' => '/gamma');
+				$choices[] = array('name' => "Logout", 'class' => "glyphicon glyphicon-log-in" ,'link' => '/auth/logout');
+			}
+			if($userRole == 'player'){
+				$choices[] = array('name' => $this->session->userdata('username'), "class" => "" ,'link' => '/gamma');
+				$choices[] = array('name' => "Logout", 'class' => "glyphicon glyphicon-log-in" ,'link' => '/auth/logout');
+			}
+		}
+
+		return $choices;
+	}
         
-        function restrict($roleNeeded = null) {
+	function restrict($roleNeeded = null) {
 		$userRole = $this->session->userdata('userRole');
 		if ($roleNeeded != null) {
 			if (is_array($roleNeeded)) {
