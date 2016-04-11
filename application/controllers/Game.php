@@ -36,6 +36,7 @@ class Game extends Application
         // Ensure the status is up to date before preforming any action
         $this->getStatus();
         $state = $this->getState();
+
         if($state == 0) {
             echo "Game is not running";
         } elseif($state == 1) {

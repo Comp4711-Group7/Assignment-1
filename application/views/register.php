@@ -3,6 +3,6 @@
   Username: <input type="text" name="userid"></input><br/>
   Password: <input type="password" name="password"></input><br/>
   Password Confirmation: <input type="password" name="passwordconfirmation"></input><br/>
-  <input type="submit">Submit</input>
+  <input type="submit"/>
 </form>
 

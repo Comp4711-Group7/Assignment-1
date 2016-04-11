@@ -1,37 +1,60 @@
 <br>
-<div style="text-align: center">{stocksdropdown}</div>
-
-<h4>Movements</h4>
+<!--<div style="text-align: center">{stocksdropdown}</div>-->
 
 <table style="width:100%">
     <tr>
-        <th>DATE</th>
-        <th>ACTION</th>
-        <th>AMOUNT</th>
+        <th>CODE</th>
+        <th>NAME</th>
+        <th>CATEGORY</th>
+        <th>VALUE</th>
     </tr>
-    {stockmovements}
+    {stockprofile}
     <tr>
-        <td>{Datetime}</td>
-        <td>{Action}</td>
-        <td>{Amount}</td>
+        <td>{code}</td>
+        <td>{name}</td>
+        <td>{category}</td>
+        <td>{value}</td>
     </tr>
-    {/stockmovements}
+    {/stockprofile}
 </table>
 
-<h4>Transactions</h4>
-<table style="width:100%">
-    <tr>
-        <th>DATE</th>
-        <th>PLAYER</th>
-        <th>TRANSACTION</th>
-        <th>QUANTITY</th>
-    </tr>
-    {stocktransactions}
-    <tr>
-        <td>{DateTime}</td>
-        <td>{Player}</td>
-        <td>{Trans}</td>
-        <td>{Quantity}</td>
-    </tr>
-    {/stocktransactions}
-</table>
+<div class="row stock-status">
+    <div class="col-md-6">
+        <h4>Movements</h4>
+
+        <table style="width:100%">
+            <tr>
+                <th>DATE</th>
+                <th>ACTION</th>
+                <th>AMOUNT</th>
+            </tr>
+            {stockmovements}
+            <tr>
+                <td>{Datetime}</td>
+                <td>{Action}</td>
+                <td>{Amount}</td>
+            </tr>
+            {/stockmovements}
+        </table>
+
+    </div>
+    <div class="col-md-6">
+        <h4>Transactions</h4>
+        <table style="width:100%">
+            <tr>
+                <th>DATE</th>
+                <th>PLAYER</th>
+                <th>TRANSACTION</th>
+                <th>QUANTITY</th>
+            </tr>
+            {stocktransactions}
+            <tr>
+                <td>{DateTime}</td>
+                <td>{Player}</td>
+                <td>{Trans}</td>
+                <td>{Quantity}</td>
+            </tr>
+            {/stocktransactions}
+        </table>
+    </div>
+</div>
