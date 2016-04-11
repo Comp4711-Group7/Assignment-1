@@ -28,43 +28,14 @@ if (!defined('APPPATH'))
     </script>
 </head>
 <body>
-
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Stock Ticker</a>
-            <a class="navbar-brand" href="../game">Play the game!</a>
+            {menubarLeft}
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-<!--            <ul class="nav navbar-nav">-->
-<!--                <li class="active"><a href="#">Home</a></li>-->
-<!--                <li><a href="#">About</a></li>-->
-<!--                <li><a href="#">Projects</a></li>-->
-<!--                <li><a href="#">Contact</a></li>-->
-<!--            </ul>-->
             <ul class="nav navbar-nav navbar-right">
-                <?php
-                    // check if the user is logged in to display logout button
-                    if($logged_in == TRUE){
-                ?>
-                            <li style="margin-top: 15px; color: white;"><span class="username">{username}</span></li>
-                            <li><a href="/auth/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                            
-                        <?php
-                    }// display login button if user is not logged in
-                    else {
-                        ?>
-                            
-                        <li><a href="/auth"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li><a href="/auth/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
-                <?php
-                    }
-                ?>
+                {menubarRight}
             </ul>
             
         </div>
@@ -73,30 +44,15 @@ if (!defined('APPPATH'))
 
 <div class="container-fluid text-center">
     <div class="row content">
-        <div class="col-sm-2 sidenav">
-<!--            <p><a href="#">Link</a></p>-->
-<!--            <p><a href="#">Link</a></p>-->
-<!--            <p><a href="#">Link</a></p>-->
+        <div class="col-sm-1 sidenav">
         </div>
-        <div class="col-sm-8 text-left">
-
+        <div class="col-sm-10 text-left">
             <h1>{title}</h1>
             {content}
         </div>
-        <div class="col-sm-2 sidenav">
-<!--            <div class="well">-->
-<!--                <a href="/stocks" ><button style="width: 100% ; height: 100%;">STOCKS</button></a>-->
-<!--            </div>-->
-<!--            <div class="well">-->
-<!--                <a href="/players" ><button style="width: 100% ; height: 100%;">PLAYERS</button></a>-->
-<!--            </div>-->
+        <div class="col-sm-1 sidenav">
         </div>
     </div>
 </div>
-
-<!--<footer id="footer" class="container-fluid text-center">-->
-<!--    <p>Footer Text</p>-->
-<!--</footer>-->
-
 </body>
 </html>

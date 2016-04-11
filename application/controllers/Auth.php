@@ -21,7 +21,7 @@ class Auth extends Application
     function submit()
     {
         $key = $_POST['userid'];
-        $user = $this->users->getUserByUserName($key);
+        $user = $this->user->getUserByUserName($key);
         if (password_verify($this->input->post('password'), $user->password)) {
             $this->session->set_userdata('userID', $user->id);
             $this->session->set_userdata('username', $user->username);
