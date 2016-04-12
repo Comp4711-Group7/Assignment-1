@@ -10,28 +10,65 @@
 </div>
 
 <hr>
+<h4>Your Current Holdings</h4>
+<table style="width:100%">
+    <tr>
+        <th>CODE</th>
+        <th>NAME</th>
+        <th>CATEGORY</th>
+        <th>VALUE</th>
+    </tr>
+<!--    {stockprofile}-->
+<!--    <tr>-->
+<!--        <td>{code}</td>-->
+<!--        <td>{name}</td>-->
+<!--        <td>{category}</td>-->
+<!--        <td>{value}</td>-->
+<!--    </tr>-->
+<!--    {/stockprofile}-->
+</table>
 
 <div class="row stock-status">
-    <div class="col-md-5">
-        <h4>Your Holdings</h4>
+    <div class="col-md-7">
+        <h4>Market</h4>
 
         <table style="width:100%">
             <tr>
-                <th>DATE</th>
-                <th>ACTION</th>
-                <th>AMOUNT</th>
+                <th>CODE</th>
+                <th>NAME</th>
+                <th>CATEGORY</th>
+                <th>VALUE</th>
+                <th></th>
             </tr>
+            {stocks}
+            <tr>
+                <td>{code}</td>
+                <td>{name}</td>
+                <td>{category}</td>
+                <td>{value}</td>
+                <td><a href="#">BUY</a></td>
+            </tr>
+            {/stocks}
         </table>
 
     </div>
     <div class="col-md-5">
-        <h4>Market</h4>
+        <h4>Trend</h4>
         <table style="width:100%">
             <tr>
-                <th>STOCK</th>
-                <th>TREND</th>
-                <th>VALUE</th>
+                <th>DATE</th>
+                <th>PLAYER</th>
+                <th>TRANSACTION</th>
+                <th>QUANTITY</th>
             </tr>
+<!--            {stocktransactions}-->
+<!--            <tr>-->
+<!--                <td>{DateTime}</td>-->
+<!--                <td>{Player}</td>-->
+<!--                <td>{Trans}</td>-->
+<!--                <td>{Quantity}</td>-->
+<!--            </tr>-->
+<!--            {/stocktransactions}-->
         </table>
     </div>
 </div>

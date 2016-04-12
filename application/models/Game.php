@@ -5,6 +5,8 @@ class Game extends MY_Model
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('stock');
+        $this->load->model('user');
     }
 
     public function getStatus() {
@@ -29,6 +31,10 @@ class Game extends MY_Model
         $status = array("round"=>$round,"state"=>$state,"countdown"=>$countdown,"message"=>$message);
 
         return array($status);
+    }
+
+    public function getStocks(){
+        return $this->stock->getStocks('http://bsx.jlparry.com/data/stocks');
     }
 
 }
