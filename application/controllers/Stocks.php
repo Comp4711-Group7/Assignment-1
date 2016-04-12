@@ -13,9 +13,9 @@ class Stocks extends Application {
 
     public function index()
     {
-        $this->data["stocks"] = $this->stock->getStocks();
+        $this->data["stocks"] = $this->stock->getStocks('http://bsx.jlparry.com/data/stocks');
         $this->data['pagebody'] = 'stocks';	// this is the view we want shown
-        $this->data['title'] = 'Stock\'s List';
+        $this->data['title'] = 'Stock Lists';
         $this->render();
     }
 

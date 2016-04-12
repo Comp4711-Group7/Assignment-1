@@ -1,6 +1,4 @@
-<br>
-<!--<div style="text-align: center">{stocksdropdown}</div>-->
-
+<hr>
 <table style="width:100%">
     <tr>
         <th>CODE</th>
@@ -24,15 +22,17 @@
 
         <table style="width:100%">
             <tr>
-                <th>DATE</th>
+                <th>SEQ</th>
+                <th>DATETIME</th>
                 <th>ACTION</th>
                 <th>AMOUNT</th>
             </tr>
             {stockmovements}
             <tr>
-                <td>{Datetime}</td>
-                <td>{Action}</td>
-                <td>{Amount}</td>
+                <td>{seq}</td>
+                <td>{datetime}</td>
+                <td>{action}</td>
+                <td>{amount}</td>
             </tr>
             {/stockmovements}
         </table>

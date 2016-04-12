@@ -49,11 +49,11 @@ class Stock extends CI_Model {
         }
         array_shift($stocks);
 
-        return $stocks;
+        return array_slice($stocks, 0, 5);
     }
 
     /**
-     * get movements of all stocks
+     * Get current stock movements from BSX server
      * @param $code
      * @return mixed
      */
@@ -71,7 +71,7 @@ class Stock extends CI_Model {
         }
         array_shift($stocks);
 
-        return $stocks;
+        return array_slice($stocks, 0, 5);
     }
 
 

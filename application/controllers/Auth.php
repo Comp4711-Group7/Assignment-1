@@ -15,6 +15,7 @@ class Auth extends Application
     function index()
     {
         $this->data['pagebody'] = 'login';
+        $this->data['title'] = 'Login';
         $this->render();
     }
 
@@ -45,6 +46,7 @@ class Auth extends Application
     function register()
     {
         $this->data['pagebody'] = 'register';
+        $this->data['title'] = 'Register';
         $this->render();
     }
 }

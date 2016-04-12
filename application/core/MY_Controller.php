@@ -61,19 +61,21 @@ class Application extends CI_Controller {
 		$userRole = $this->session->userdata('userRole');
 
 		if($wing == 'L'){
-			$choices[] = array('name' => "Stock Ticker", "class" => "", 'link' => '/');
+			$choices[] = array('name' => "Stock Ticker" , "class" => "", 'link' => '/');
+			$choices[] = array('name' => "Stocks" , "class" => "", 'link' => '/stocks');
+			$choices[] = array('name' => "User Lists" , "class" => "", 'link' => '/');
 
 			if($userRole == 'admin'){
 				$choices[] = array('name' => "Manage", "class" => "",'link' => '/beta');
 				$choices[] = array('name' => "Stocks", "class" => "", 'link' => '/gamma');
 			}
 			if($userRole == 'player'){
-				$choices[] = array('name' => "Play Game", "class" => "",'link' => '/game');
-				$choices[] = array('name' => "Stocks", "class" => "" ,'link' => '/stocks');
+				$choices[] = array('name' => "Play Game", "class" => "",'link' => '/games');
 			}
 		}else{
 			if(!$userRole){
 				$choices[] = array('name' => "Login", 'class' => "glyphicon glyphicon-log-in",'link' => '/auth');
+				$choices[] = array('name' => "Register", 'class' => "glyphicon glyphicon-log-in",'link' => '/auth/register');
 			}
 			if($userRole == 'admin'){
 				$choices[] = array('name' => $this->session->userdata('username'), "class" => "", 'link' => '/gamma');

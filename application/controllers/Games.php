@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Game extends Application
+class Games extends Application
 {
     public $xml = null;
     private $state;
@@ -12,21 +12,21 @@ class Game extends Application
     {
         parent::__construct();
         $this->restrict(array(ROLE_USER));
+        $this->load->model('game');
         //$this->getStatus();
         //$this->checkRound();
     }
 
     public function index() {
-        $this->load->model('player');
         $this->data['pagebody'] = 'game';	// this is the view we want shown
         $this->data['title'] = 'Game Page';
+        $this->data["stocks"] = $this->game->getStocks();
         $this->render();
     }
 
     // Populates data memebers with current status from BSX server
     public function getStatus() {
         $this->xml = simplexml_load_file('http://bsx.jlparry.com/status');
-
         $this->round = $this->xml->round;
         $this->state = $this->xml->state;
         $this->countdown = $this->xml->countdown;
