@@ -20,6 +20,7 @@ if (!defined('APPPATH'))
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="../assets/css/custom.css" rel="stylesheet">
+    <script src="../assets/js/custom.js"></script>
     <script>
         function nameChange(link,name) {
             console.log(name)

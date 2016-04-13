@@ -37,4 +37,31 @@ class Game extends MY_Model
         return $this->stock->getStocks('http://bsx.jlparry.com/data/stocks');
     }
 
+    public function register($url, $password){
+        $this->load->library('session');
+        $fields = array(
+            'team' => 'S07',
+            'name' => 'Panama Stock Haven',
+            'password' => $password
+        );
+        $response = $this->sendPost($url, $fields);
+        $xml = simplexml_load_string($response);
+        $this->session->token = (string)$xml->token;
+    }
+
+    public function buy($code, $quantity){
+
+    }
+
+    private function sendPost($url, $fields){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$fields);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec ($ch);
+        curl_close ($ch);
+        return $response;
+    }
+
 }
