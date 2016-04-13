@@ -14,7 +14,8 @@ class Welcome extends Application {
 	public function index()
 	{
 		$this->data['stocks'] = $this->stock->getStocks('http://bsx.jlparry.com/data/stocks');
-		$this->data['players'] = $this->db->get("players")->result_array();
+		//$this->data['players'] = $this->db->get("players")->result_array();
+		$this->data['users'] = $this->db->get("users")->result_array();
 		$this->data['gameStatus'] = $this->game->getStatus();
 		$this->data['recentStockMovements'] = $this->stock->getMovements('http://bsx.jlparry.com/data/movement');
 		$this->data['recentStockTrans'] = $this->stock->getTransactions('http://bsx.jlparry.com/data/transactions');
