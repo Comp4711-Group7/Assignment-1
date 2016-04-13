@@ -73,12 +73,23 @@ class User extends MY_Model
      * @param $name
      * @return mixed
      */
-    public function getUserTransaction($name) {
+    public function getUserTransaction($name)
+    {
 
         $this->db->select('*');
         $this->db->from('transactions');
         $this->db->where('username', $name);
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function register($username, $filetype){
+        $data = array  (
+                    'username' => $this-> input -> post('username'),
+                    'avatar' => $username . "." . $filetype,
+                    'password' => password_hash($this -> input -> post('password'), PASSWORD_DEFAULT),
+                    'role' => 'player'
+	        );
+	    $this -> db -> insert('users', $data);
     }
 }
