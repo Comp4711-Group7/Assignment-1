@@ -42,6 +42,14 @@ class Games extends Application
 
     public function sell()
     {
+        $status = $this->game->getStatus();
+        if($status[0]["state"] == 3 || $status[0]["state"] == 4) {
+            $code = $this->input->post('code');
+            $quantity = $this->input->post('quantity');
+            $this->game->sell($code, $quantity);
+        }else{
+            echo "game is close";
+        }
 
     }
 }

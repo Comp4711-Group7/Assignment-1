@@ -63,6 +63,20 @@ class Game extends MY_Model
         var_dump($xml);
     }
 
+    public function sell($code, $quantity){
+        $this->load->library('session');
+        $fields = array(
+            'team' => 'S07',
+            'token' => $this->session->token,
+            'player' => $this->session->userdata('username'),
+            'stock' => $code,
+            'quantity' => $quantity
+        );
+        $response = $this->sendPost('http://bsx.jlparry.com/sell', $fields);
+        $xml = simplexml_load_string($response);
+        var_dump($xml);
+    }
+
     private function sendPost($url, $fields){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url);
