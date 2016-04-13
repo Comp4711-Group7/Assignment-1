@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Game extends Application
+class Management extends Application
 {
     function __construct()
     {
@@ -10,8 +10,8 @@ class Game extends Application
 
     public function index() {
         $this->load->model('player');
-        $this->data['pagebody'] = 'game';	// this is the view we want shown
-        $this->data['title'] = 'Game Page';
+        $this->data['pagebody'] = 'management';	// this is the view we want shown
+        $this->data['title'] = 'Agent Management';
         $this->render();
     }
 }

@@ -1,9 +1,46 @@
+<hr>
+<div>
+  <div class="reg-form">
+    <form class="form-horizontal" action='/auth/register' method="POST">
+      <fieldset>
+        <div class="control-group">
+          <!-- Username -->
+          <label class="control-label"  for="username">Username</label>
+          <div class="controls">
+            <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+          </div>
+        </div>
+        <div class="control-group">
+          <!-- Password-->
+          <label class="control-label" for="avatar">Avatar</label>
+          <div class="controls">
+            <input type="file" id="avatar" name="avatar"  accept="image/*">
+          </div>
+        </div>
+        <div class="control-group">
+          <!-- Password-->
+          <label class="control-label" for="password">Password</label>
+          <div class="controls">
+            <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+          </div>
+        </div>
 
-<form enctype='multipart/form-data' name="register" method="post" action="/auth/registration">
-  Username: <input type="text" name="username"></input><br/>
-  Password: <input type="password" name="password"></input><br/>
-  Password Confirmation: <input type="password" name="passwordconfirmation"></input><br/>
-  Avatar: <input type ='file' name ='avatar'/> <br/>
-  <input type="submit">Submit</input>
-</form>
+        <div class="control-group">
+          <!-- Password -->
+          <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+          <div class="controls">
+            <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
+          </div>
+        </div>
+        <br>
+        <div class="control-group">
+          <!-- Button -->
+          <div class="controls">
+            <button type="submit" name="submitButton" class="btn btn-success" value="submit">Register</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
 
