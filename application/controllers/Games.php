@@ -20,12 +20,6 @@ class Games extends Application
         $this->data["stocks"] = $this->game->getStocks();
         $this->render();
     }
-<<<<<<< HEAD
-    
-    public function purchase() {
-        
-    }
-=======
 
     private function register($status){
         if($status[0]["state"] == 3 || $status[0]["state"] == 4){
@@ -38,6 +32,4 @@ class Games extends Application
         $quantity = $this->input->post('quantity');
         $this->game->buy($code, $quantity);
     }
-
->>>>>>> e48797103a4be0d8a848cb8eaf68bc0582c60254
 }
