@@ -21,4 +21,8 @@ class Games extends Application
         $this->data["stocks"] = $this->game->getStocks();
         $this->render();
     }
+    
+    public function purchase() {
+        
+    }
 }
