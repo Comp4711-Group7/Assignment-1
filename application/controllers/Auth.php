@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             parent::__construct();
             $this->load->helper('url');
             $this->load->model('users');
+            $this->load->helper('form');
         }
         function index() {
               $this->data['pagebody'] = 'login';
@@ -37,5 +38,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         function register() {
               $this->data['pagebody'] = 'register';
               $this->render();
+        }
+        
+        function registration(){
+                $this->load->library('form_validation');
+		$this->form_validation->set_rules('userid', 'Username', 'trim|required|max_length[100]|callback_check_db_user');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[32]');
+		$this->form_validation->set_rules('passwordconfirmation', 'Password Confirmation', 'trim|required|matches[password]');
+		
         }
     }
