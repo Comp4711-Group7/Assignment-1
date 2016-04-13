@@ -33,4 +33,7 @@ class Games extends Application
         $this->game->buy($code, $quantity);
     }
 
+    public function sell() {
+
+    }
 }
