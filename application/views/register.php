@@ -1,7 +1,8 @@
 <hr>
 <div>
   <div class="reg-form">
-    <form class="form-horizontal" action='/auth/register' method="POST">
+      <?php echo validation_errors(); ?>
+    <form class="form-horizontal" enctype="multipart/form-data" action='/auth/registration' method="POST">
       <fieldset>
         <div class="control-group">
           <!-- Username -->

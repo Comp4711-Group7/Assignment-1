@@ -38,4 +38,7 @@ class Games extends Application
         }
     }
 
+    public function sell() {
+
+    }
 }
