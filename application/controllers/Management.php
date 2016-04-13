@@ -6,6 +6,7 @@ class Management extends Application
     function __construct()
     {
         parent::__construct();
+        $this->restrict(array(ROLE_ADMIN));
     }
 
     public function index() {

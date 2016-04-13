@@ -24,16 +24,16 @@
             <table style="width:100%">
                 <tr>
                     <th>PLAYER</th>
-                    <th>CASH</th>
-                    <th>EQUITY</th>
+                    <th>ID</th>
+                    <th>ROLE</th>
                 </tr>
-                {players}
+                {users}
                 <tr>
-                    <td><a href="players/{Player}">{Player}</a></td>
-                    <td>{Cash}</td>
-                    <td>{Equity}</td>
+                    <td><a href="users/{username}">{username}</a></td>
+                    <td>{id}</td>
+                    <td>{role}</td>
                 </tr>
-                {/players}
+                {/users}
             </table>
         </div>
     </div>
