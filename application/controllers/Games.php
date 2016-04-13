@@ -29,11 +29,15 @@ class Games extends Application
         }
     }
 
-    public function buy()
-    {
-        $code = $this->input->post('code');
-        $quantity = $this->input->post('quantity');
-        $this->game->buy($code, $quantity);
+    public function buy(){
+        $status = $this->game->getStatus();
+        if($status[0]["state"] == 3 || $status[0]["state"] == 4) {
+            $code = $this->input->post('code');
+            $quantity = $this->input->post('quantity');
+            $this->game->buy($code, $quantity);
+        }else{
+            echo "game is close";
+        }
     }
 
     public function sell()

@@ -50,7 +50,17 @@ class Game extends MY_Model
     }
 
     public function buy($code, $quantity){
-
+        $this->load->library('session');
+        $fields = array(
+            'team' => 'S07',
+            'token' => $this->session->token,
+            'player' => $this->session->userdata('username'),
+            'stock' => $code,
+            'quantity' => $quantity
+        );
+        $response = $this->sendPost('http://bsx.jlparry.com/buy', $fields);
+        $xml = simplexml_load_string($response);
+        var_dump($xml);
     }
 
     private function sendPost($url, $fields){
