@@ -66,8 +66,7 @@ class Application extends CI_Controller {
 			$choices[] = array('name' => "User Lists" , "class" => "", 'link' => '/');
 
 			if($userRole == 'admin'){
-				$choices[] = array('name' => "Manage", "class" => "",'link' => '/beta');
-				$choices[] = array('name' => "Stocks", "class" => "", 'link' => '/gamma');
+				$choices[] = array('name' => "Manage", "class" => "",'link' => '/management');
 			}
 			if($userRole == 'player'){
 				$choices[] = array('name' => "Play Game", "class" => "",'link' => '/games');

@@ -3,55 +3,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Games extends Application
 {
-    public $xml = null;
-    private $state;
-    private $round;
-    private $countdown;
 
     function __construct()
     {
         parent::__construct();
         $this->restrict(array(ROLE_USER));
         $this->load->model('game');
-        //$this->getStatus();
-        //$this->checkRound();
+        $this->load->library('session');
     }
 
     public function index() {
         $this->data['pagebody'] = 'game';	// this is the view we want shown
         $this->data['title'] = 'Game Page';
+        $this->data['gameStatus'] = $this->game->getStatus();
+        $this->register($this->data['gameStatus']);
         $this->data["stocks"] = $this->game->getStocks();
         $this->render();
     }
 
-    // Populates data memebers with current status from BSX server
-    public function getStatus() {
-        $this->xml = simplexml_load_file('http://bsx.jlparry.com/status');
-        $this->round = $this->xml->round;
-        $this->state = $this->xml->state;
-        $this->countdown = $this->xml->countdown;
-    }
-
-    // Checks what state the server is in, then takes an action depending on that state
-    public function checkRound() {
-        // Ensure the status is up to date before preforming any action
-        $this->getStatus();
-        $state = $this->getState();
-
-        if($state == 0) {
-            echo "Game is not running";
-        } elseif($state == 1) {
-            echo "Game is in setup mode";
-        } elseif($state == 2) {
-            echo "Game is ready!";
-        } elseif($state == 3) {
-            echo "Game is active";
-        } else {
-            echo "The current round is over";
+    private function register($status){
+        if($status[0]["state"] == 3 || $status[0]["state"] == 4){
+           $this->game->register("http://bsx.jlparry.com/register", "tuesday");
         }
     }
 
-    public function getState() {
-        return $this->state;
+    public function buy(){
+        $code = $this->input->post('code');
+        $quantity = $this->input->post('quantity');
+        $this->game->buy($code, $quantity);
     }
+
+
 }
