@@ -11,6 +11,10 @@ class Games extends Application
     function __construct()
     {
         parent::__construct();
+        if (! $this->session->userdata('userRole') == 'player')
+        {
+            redirect('auth'); // the user is not logged in, redirect them!
+        }
         $this->restrict(array(ROLE_USER));
         $this->load->model('game');
     }
