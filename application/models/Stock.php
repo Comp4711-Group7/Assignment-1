@@ -47,9 +47,13 @@ class Stock extends CI_Model {
             }
             fclose($handle);
         }
-        array_shift($stocks);
+        array_shift($stocks); // remove the first element
 
-        return array_slice($stocks, 0, 5);
+        //get the last 5 elements of the array
+        if(count($stocks) > 5)
+            $stocks = array_slice($stocks, count($stocks) - 5);
+
+        return $this->processArray($stocks);
     }
 
     /**
@@ -58,7 +62,6 @@ class Stock extends CI_Model {
      * @return mixed
      */
     public function getMovements($url){
-
         $stocks = array();
         ini_set('auto_detect_line_endings', TRUE);
         if (($handle = fopen($url, 'r')) !== FALSE)
@@ -69,9 +72,13 @@ class Stock extends CI_Model {
             }
             fclose($handle);
         }
-        array_shift($stocks);
+        array_shift($stocks); // remove the first element
 
-        return array_slice($stocks, 0, 5);
+        //get the last 5 elements of the array
+        if(count($stocks) > 5)
+            $stocks = array_slice($stocks, count($stocks) - 5);
+
+        return $this->processArray($stocks);
     }
 
 
@@ -114,7 +121,7 @@ class Stock extends CI_Model {
             fclose($handle);
         }
 
-        return $stockMovement;
+        return $this->processArray($stockMovement);
     }
 
     /**
@@ -147,7 +154,21 @@ class Stock extends CI_Model {
             fclose($handle);
         }
 
-        return $stockTrans;
+        return $this->processArray($stockTrans);
+    }
+
+    /**
+     * Convert the Datetime to a readable format
+     * @param $stocks
+     * @return array
+     */
+    private function processArray($stocks){
+        date_default_timezone_set('GMT');
+        $count = count($stocks);
+        for($i = 0; $i < $count; $i++){
+            $stocks[$i]["datetime"] = date("Y-m-d H:i:s", $stocks[$i]["datetime"]);
+        }
+        return array_reverse($stocks);
     }
 
 }
