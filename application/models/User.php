@@ -16,4 +16,14 @@ class User extends MY_Model
             return null;
         return $query->row();
     }
+    public function register($username, $filetype){
+        $data = array  (
+                    'username' => $this-> input -> post('username'),
+                    'avatar' => $username . "." . $filetype,
+                    'password' => password_hash($this -> input -> post('password'), PASSWORD_DEFAULT),
+                    'role' => 'player'
+	        );
+	$this -> db -> insert('users', $data);
+        
+    }
 }
