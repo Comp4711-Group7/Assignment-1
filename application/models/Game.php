@@ -10,7 +10,7 @@ class Game extends MY_Model
     }
 
     public function getStatus() {
-        $xml = simplexml_load_file('http://bsx.jlparry.com/status');
+        $xml = simplexml_load_file(BSX_SERVER.'status');
 
         $round = $xml->round;
         $state = $xml->state;
@@ -34,7 +34,20 @@ class Game extends MY_Model
     }
 
     public function getStocks(){
-        return $this->stock->getStocks('http://bsx.jlparry.com/data/stocks');
+        return $this->stock->getStocks(BSX_SERVER.'data/stocks');
+    }
+
+    public function getTrend(){
+        return $this->stock->getTrend(BSX_SERVER.'data/movement');
+    }
+
+    public function getCurrentPlayer(){
+        $this->db->select('*')->from('users');
+        $this->db->where('username', $this->session->userdata('username'));
+        $query = $this->db->get();
+        $result = $query->result_array();
+        $result[0]['avatar'] =  "assets/images/" . $result[0]['avatar'];
+        return $result;
     }
 
     public function register($url, $password){
@@ -58,23 +71,29 @@ class Game extends MY_Model
             'stock' => $code,
             'quantity' => $quantity
         );
-        $response = $this->sendPost('http://bsx.jlparry.com/buy', $fields);
+        $response = $this->sendPost(BSX_SERVER.'buy', $fields);
         $xml = simplexml_load_string($response);
-        var_dump($xml);
+        $this->user->addToHoldings($xml);
     }
 
-    public function sell($code, $quantity){
+    public function sell($code, $quantity, $token){
         $this->load->library('session');
         $fields = array(
             'team' => 'S07',
             'token' => $this->session->token,
             'player' => $this->session->userdata('username'),
             'stock' => $code,
-            'quantity' => $quantity
+            'quantity' => $quantity,
+            'certificate' => $token
         );
-        $response = $this->sendPost('http://bsx.jlparry.com/sell', $fields);
+        $response = $this->sendPost(BSX_SERVER.'sell', $fields);
         $xml = simplexml_load_string($response);
-        var_dump($xml);
+
+        return $xml;
+    }
+
+    public function getPlayerHoldings(){
+        return $this->user->getUserHoldings($this->session->userdata('username'));
     }
 
     private function sendPost($url, $fields){

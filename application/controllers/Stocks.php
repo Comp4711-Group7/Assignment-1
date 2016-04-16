@@ -8,12 +8,11 @@ class Stocks extends Application {
     {
         parent::__construct();
         $this->load->model('stock');
-        //$this->restrict(array(ROLE_USER,ROLE_ADMIN));
     }
 
     public function index()
     {
-        $this->data["stocks"] = $this->stock->getStocks('http://bsx.jlparry.com/data/stocks');
+        $this->data["stocks"] = $this->stock->getStocks(BSX_SERVER.'data/stocks');
         $this->data['pagebody'] = 'stocks';	// this is the view we want shown
         $this->data['title'] = 'Stock Lists';
         $this->render();

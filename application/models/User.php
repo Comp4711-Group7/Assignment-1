@@ -12,7 +12,10 @@ class User extends MY_Model
      * PORTED OVER, needs testing
      */
     public function getUsers() {
-        $query = $this->db->get('users');
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('role', 'player');
+        $query = $this->db->get();
         return $query->result_array();
     }
 
@@ -58,13 +61,10 @@ class User extends MY_Model
      * @return mixed
      */
     public function getUserHoldings($name) {
-
         $this->db->select('*');
         $this->db->from('holdings');
-        $this->db->where('username', $name);
-
+        $this->db->where('player', $name);
         $query = $this->db->get();
-
         return $query->result_array();
     }
 
@@ -73,23 +73,50 @@ class User extends MY_Model
      * @param $name
      * @return mixed
      */
-    public function getUserTransaction($name)
-    {
-
+    public function getUserTransaction($name){
         $this->db->select('*');
         $this->db->from('transactions');
-        $this->db->where('username', $name);
+        $this->db->where('player', $name);
         $query = $this->db->get();
         return $query->result_array();
     }
 
+    /**
+     * @param $username
+     * @param $filetype
+     */
     public function register($username, $filetype){
         $data = array  (
-                    'username' => $this-> input -> post('username'),
+                    'username' => $this->input->post('username'),
                     'avatar' => $username . "." . $filetype,
                     'password' => password_hash($this -> input -> post('password'), PASSWORD_DEFAULT),
                     'role' => 'player'
 	        );
-	    $this -> db -> insert('users', $data);
+	    $this->db->insert('users', $data);
     }
+
+    /**
+     * Save Current Holdings
+     * @param $info
+     */
+    public function addToHoldings($info){
+
+        $data = array(
+            'token' => $info->token,
+            'stock' => $info->stock,
+            'player' => $this->session->userdata('username'),
+            'quantity' => $info->amount
+        );
+        $this->db->insert('holdings', $data);
+
+        $data = array(
+            'Stock' => $info->stock,
+            'DateTime' => $info->datetime,
+            'Player' => $this->session->userdata('username'),
+            'Trans' => 'buy',
+            'Quantity' => $info->amount
+        );
+        $this->db->insert('transactions', $data);
+    }
+
 }

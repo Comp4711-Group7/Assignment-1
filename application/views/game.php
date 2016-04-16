@@ -1,13 +1,22 @@
+<h3 class='{flag}' style="text-align: center">{message}</h3>
 <hr>
 <div class="row">
     <div class="col-md-2">
-        <img src="http://placehold.it/150x150">
     </div>
-    <div class="col-md-6">
-        Name: <br>
-        Cash:  <br>
+    {currentPlayer}
+    <div class="col-md-2">
+        <img height="200" width="200" src='{avatar}'>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3" style="font-size: xx-large; margin-left: 2em;">
+        <div class="row">
+            Name: <strong>{username}</strong>
+        </div>
+        <div class="row">
+            Cash:
+        </div>
+    </div>
+    {/currentPlayer}
+    <div class="col-md-3">
         <div class="row stocks" style="margin-top: 0px; text-align: center">
             <h4>GAME STATUS</h4>
             <div class="gameStatus">
@@ -18,73 +27,96 @@
             </div>
         </div>
     </div>
+    <div class="col-md-2">
+    </div>
 </div>
 
 <hr>
-<h4>Your Current Holdings</h4>
-<table style="width:100%">
-    <tr>
-        <th>CODE</th>
-        <th>NAME</th>
-        <th>CATEGORY</th>
-        <th>VALUE</th>
-    </tr>
-<!--    {stockprofile}-->
-<!--    <tr>-->
-<!--        <td>{code}</td>-->
-<!--        <td>{name}</td>-->
-<!--        <td>{category}</td>-->
-<!--        <td>{value}</td>-->
-<!--    </tr>-->
-<!--    {/stockprofile}-->
-</table>
 
 <div class="row stock-status">
     <div class="col-md-7">
-        <h4>Market</h4>
+        <div class="row">
+            <h4>Your Current Holdings</h4>
             <table style="width:100%">
                 <tr>
                     <th>CODE</th>
-                    <th>NAME</th>
-                    <th>CATEGORY</th>
                     <th>VALUE</th>
-                    <th>BUY</th>
+                    <th>SELL</th>
                 </tr>
-                {stocks}
+                {holdings}
                 <tr>
-                    <td>{code}</td>
-                    <td>{name}</td>
-                    <td>{category}</td>
-                    <td>{value}</td>
+                    <td>{stock}</td>
+                    <td>{quantity}</td>
                     <td>
-                        <form action='/games/buy' method="POST">
-                            <input type="hidden" name="code" value='{code}'>
+                        <form action='/games/sell' method="POST">
+                            <input type="hidden" name="code" value='{stock}'>
+                            <input type="hidden" name="token" value='{token}'>
                             <input type="number" name="quantity" style="width: 3em" min="1">
-                            <button type="submit" name="submitButton" class="btn btn-success" value="submit">Buy</button>
+                            <button type="submit" name="submitButton" class="btn btn-warning" value="submit">Sell</button>
                         </form>
                     </td>
                 </tr>
-                {/stocks}
+                {/holdings}
             </table>
+        </div>
+       <div class="row">
+           <h4>Active Stocks</h4>
+           <table style="width:100%">
+               <tr>
+                   <th>CODE</th>
+                   <th>NAME</th>
+                   <th>CATEGORY</th>
+                   <th>VALUE</th>
+                   <th>BUY</th>
+               </tr>
+               {stocks}
+               <tr>
+                   <td>{code}</td>
+                   <td>{name}</td>
+                   <td>{category}</td>
+                   <td>{value}</td>
+                   <td>
+                       <form action='/games/buy' method="POST">
+                           <input type="hidden" name="code" value='{code}'>
+                           <input type="number" name="quantity" style="width: 3em" min="1">
+                           <button type="submit" name="submitButton" class="btn btn-success" value="submit">Buy</button>
+                       </form>
+                   </td>
+               </tr>
+               {/stocks}
+           </table>
+       </div>
     </div>
+
     <div class="col-md-5">
-        <h4>Trend</h4>
+        <h4>Market Trend</h4>
         <table style="width:100%">
             <tr>
-                <th>DATE</th>
-                <th>PLAYER</th>
-                <th>TRANSACTION</th>
-                <th>QUANTITY</th>
+                <th>seq</th>
+                <th>datetime</th>
+                <th>code</th>
+                <th>action</th>
+                <th>amount</th>
             </tr>
-<!--            {stocktransactions}-->
-<!--            <tr>-->
-<!--                <td>{DateTime}</td>-->
-<!--                <td>{Player}</td>-->
-<!--                <td>{Trans}</td>-->
-<!--                <td>{Quantity}</td>-->
-<!--            </tr>-->
-<!--            {/stocktransactions}-->
+            {trend}
+            <tr>
+                <td>{seq}</td>
+                <td>{datetime}</td>
+                <td>{code}</td>
+                <td>{action}</td>
+                <td>{amount}</td>
+            </tr>
+            {/trend}
         </table>
     </div>
 </div>
 
+<script>
+    $(document).ready(function(){
+        setInterval(function(){cache_clear()},20000);
+    });
+    function cache_clear()
+    {
+        window.location.reload(true);
+    }
+</script>

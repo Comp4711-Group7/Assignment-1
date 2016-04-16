@@ -49,10 +49,10 @@
             </tr>
             {stocktransactions}
             <tr>
-                <td>{DateTime}</td>
-                <td>{Player}</td>
-                <td>{Trans}</td>
-                <td>{Quantity}</td>
+                <td>{datetime}</td>
+                <td>{player}</td>
+                <td>{trans}</td>
+                <td>{quantity}</td>
             </tr>
             {/stocktransactions}
         </table>
