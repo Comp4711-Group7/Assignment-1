@@ -90,3 +90,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 define('ROLE_USER','player');
 define('ROLE_ADMIN','admin');
 define('BSX_SERVER', 'http://bsx.jlparry.com/');
+define('IMG_DIRECTORY', APPPATH . "../assets/images/");

@@ -47,9 +47,7 @@ class Auth extends Application {
             $this->data['title'] = 'Register';
             $this->render();
         } else {
-            //$target_dir = APPPATH . "..\\assets\\images\\";
-            $target_dir = APPPATH . "../assets/images/";
-            if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_dir . $this->input->post('username') . "." . $fileType)) {
+            if (move_uploaded_file($_FILES["avatar"]["tmp_name"], IMG_DIRECTORY . $this->input->post('username') . "." . $fileType)) {
                 $this->user->register($this->input->post('username'), $fileType);
             } else {
                 echo "Sorry, there was an error uploading your file";
@@ -57,7 +55,6 @@ class Auth extends Application {
                 $this->data['title'] = 'Register';
                 $this->render();
             }
-           // redirect("/auth", "refresh");
             redirect("/auth");
         }
     }
@@ -77,12 +74,10 @@ class Auth extends Application {
         return True;
     }
     function check_file($name) {
-        //$target_dir = APPPATH . "..\\assets\\images\\";
-        $target_dir = APPPATH . "../assets/images/";
-        $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
+        $target_file = IMG_DIRECTORY . basename($_FILES["avatar"]["name"]);
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-        $file_target = $target_dir . $name . $imageFileType;
+        $file_target = IMG_DIRECTORY . $name . $imageFileType;
         // Check if image file is a actual image or fake image
         if (isset($_POST["submitButton"])) {
             $check = getimagesize($_FILES["avatar"]["tmp_name"]);
