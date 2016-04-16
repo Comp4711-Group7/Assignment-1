@@ -13,6 +13,9 @@ class Users extends Application {
     {
         if($this->session->userdata('logged_in')){
             $this->getUserInfo($this->session->userdata['username']);
+        }else{
+            $user = $this->user->getUsers();
+            $this->getUserInfo($user[0]['username']);
         }
     }
 
