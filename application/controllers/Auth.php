@@ -47,16 +47,18 @@ class Auth extends Application {
             $this->data['title'] = 'Register';
             $this->render();
         } else {
-            $target_dir = APPPATH . "..\\assets\\images\\";
+            //$target_dir = APPPATH . "..\\assets\\images\\";
+            $target_dir = APPPATH . "../assets/images/";
             if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_dir . $this->input->post('username') . "." . $fileType)) {
                 $this->user->register($this->input->post('username'), $fileType);
             } else {
+                echo "Sorry, there was an error uploading your file";
                 $this->data['pagebody'] = 'register';
                 $this->data['title'] = 'Register';
                 $this->render();
-                echo "Sorry, there was an error uploading your file";
             }
-            redirect("/auth", "refresh");
+           // redirect("/auth", "refresh");
+            redirect("/auth");
         }
     }
     function logout() {
@@ -75,7 +77,8 @@ class Auth extends Application {
         return True;
     }
     function check_file($name) {
-        $target_dir = APPPATH . "..\\assets\\images\\";
+        //$target_dir = APPPATH . "..\\assets\\images\\";
+        $target_dir = APPPATH . "../assets/images/";
         $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);

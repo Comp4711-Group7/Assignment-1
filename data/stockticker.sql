@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2016 at 11:54 AM
--- Server version: 5.6.26-log
--- PHP Version: 5.6.13
+-- Generation Time: Apr 16, 2016 at 08:28 AM
+-- Server version: 5.6.26
+-- PHP Version: 5.5.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `stock_ticker`
+-- Database: `stockticker`
 --
 
 -- --------------------------------------------------------
@@ -63,19 +63,8 @@ CREATE TABLE `holdings` (
   `stock` varchar(40) NOT NULL,
   `player` varchar(40) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL
+  `token` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `holdings`
---
-
-INSERT INTO `holdings` (`id`, `stock`, `player`, `quantity`, `username`) VALUES
-(1, 'BOND', 'Donald', 100, ''),
-(3, 'TECH', 'Donald', 100, ''),
-(7, 'GOLD', 'Henry', 1000, ''),
-(9, 'OIL', 'George', 600, ''),
-(10, 'IND', 'George', 100, '');
 
 -- --------------------------------------------------------
 
@@ -178,32 +167,13 @@ INSERT INTO `stocks` (`Code`, `Name`, `Category`, `Value`) VALUES
 --
 
 CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL,
   `DateTime` varchar(19) DEFAULT NULL,
   `Player` varchar(6) DEFAULT NULL,
   `Stock` varchar(4) DEFAULT NULL,
   `Trans` varchar(4) DEFAULT NULL,
-  `Quantity` int(4) DEFAULT NULL,
-  `username` varchar(20) NOT NULL
+  `Quantity` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `transactions`
---
-
-INSERT INTO `transactions` (`DateTime`, `Player`, `Stock`, `Trans`, `Quantity`, `username`) VALUES
-('2016.02.01-09:01:00', 'Donald', 'BOND', 'buy', 100, ''),
-('2016.02.01-09:01:05', 'Donald', 'TECH', 'sell', 1000, ''),
-('2016.02.01-09:01:10', 'Henry', 'TECH', 'sell', 1000, ''),
-('2016.02.01-09:01:15', 'Donald', 'IND', 'sell', 1000, ''),
-('2016.02.01-09:01:20', 'George', 'GOLD', 'sell', 100, ''),
-('2016.02.01-09:01:25', 'George', 'OIL', 'buy', 500, ''),
-('2016.02.01-09:01:30', 'Henry', 'GOLD', 'sell', 100, ''),
-('2016.02.01-09:01:35', 'Henry', 'GOLD', 'buy', 1000, ''),
-('2016.02.01-09:01:40', 'Donald', 'TECH', 'buy', 100, ''),
-('2016.02.01-09:01:45', 'Donald', 'OIL', 'sell', 100, ''),
-('2016.02.01-09:01:50', 'Donald', 'TECH', 'sell', 100, ''),
-('2016.02.01-09:01:55', 'George', 'OIL', 'buy', 100, ''),
-('2016.02.01-09:01:60', 'George', 'IND', 'buy', 100, '');
 
 -- --------------------------------------------------------
 
@@ -216,15 +186,18 @@ CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `password` varchar(64) NOT NULL,
   `role` varchar(20) NOT NULL,
-  `avatar` varchar(100) NOT NULL
+  `avatar` varchar(100) NOT NULL,
+  `cash` decimal(10,0) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`, `avatar`) VALUES
-(1, 'jsaini', '$2y$10$KsngnXrAlSQ9kQM/w5cSmumC/zdRxc0xdp5F43r70V8FWyNoOs13u', 'player', '');
+INSERT INTO `users` (`id`, `username`, `password`, `role`, `avatar`, `cash`) VALUES
+(1, 'jsaini', '$2y$10$KsngnXrAlSQ9kQM/w5cSmumC/zdRxc0xdp5F43r70V8FWyNoOs13u', 'player', '', NULL),
+(45, 'troll', '$2y$10$Iao29DoJYzeIdjdjSUjIo.lCzKcJIPcy/LHlQOVEIHlgt0syvF4VC', 'player', 'troll.jpeg', NULL),
+(46, 'admin', '$2y$10$KsngnXrAlSQ9kQM/w5cSmumC/zdRxc0xdp5F43r70V8FWyNoOs13u', 'admin', '', NULL);
 
 --
 -- Indexes for dumped tables
@@ -244,6 +217,12 @@ ALTER TABLE `holdings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -257,12 +236,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `holdings`
 --
 ALTER TABLE `holdings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

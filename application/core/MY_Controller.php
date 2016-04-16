@@ -63,7 +63,7 @@ class Application extends CI_Controller {
 		if($wing == 'L'){
 			$choices[] = array('name' => "Stock Ticker" , "class" => "", 'link' => '/');
 			$choices[] = array('name' => "Stocks" , "class" => "", 'link' => '/stocks');
-			$choices[] = array('name' => "User Lists" , "class" => "", 'link' => '/');
+			$choices[] = array('name' => "User Lists" , "class" => "", 'link' => '/users');
 
 			if($userRole == 'admin'){
 				$choices[] = array('name' => "Manage", "class" => "",'link' => '/management');
