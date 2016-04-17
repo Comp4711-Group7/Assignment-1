@@ -11,11 +11,14 @@ class Auth extends Application {
         $this->load->helper('url');
         $this->load->model('user');
     }
+    
+    /* index function of auth controller */
     function index() {
         $this->data['pagebody'] = 'login';
         $this->data['title'] = 'Login';
         $this->render();
     }
+    /* logs the user in */
     function submit() {
         $key = $_POST['userid'];
         $user = $this->user->getUserByUserName($key);
@@ -30,11 +33,15 @@ class Auth extends Application {
             redirect('/auth');
         }
     }
+    
+    /* loads register page */
     function register() {
         $this->data['pagebody'] = 'register';
         $this->data['title'] = 'Register';
         $this->render();
     }
+    
+    /* registers user */
     function registration() {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('username', 'Username', 'trim|required|max_length[100]|callback_check_db_user');
@@ -58,6 +65,8 @@ class Auth extends Application {
             redirect("/auth");
         }
     }
+    
+    /* logs a user out */
     function logout() {
         $array_items = array('userID' => 'username', '' => '', 'userRole' => '', 'logged_in' => FALSE);
         $this->session->unset_userdata($array_items);
@@ -65,6 +74,9 @@ class Auth extends Application {
         $this->session->sess_destroy();
         redirect('/');
     }
+    
+    
+    /* checks if username is taken */
     function check_db_user($value) {
         $user = $this->user->getUserByUserName($value);
         if ($user) {
@@ -73,6 +85,8 @@ class Auth extends Application {
         }
         return True;
     }
+    
+    /* checks if a file can upload */
     function check_file($name) {
         $target_file = IMG_DIRECTORY . basename($_FILES["avatar"]["name"]);
         $uploadOk = 1;
