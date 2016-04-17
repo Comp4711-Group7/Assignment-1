@@ -1,5 +1,5 @@
 <?php
-
+/* user model */
 class User extends MY_Model
 {
     public function __construct()
@@ -30,7 +30,7 @@ class User extends MY_Model
         }
         return $result;
     }
-
+    /* gets the user by the username */
     public function getUserByUserName($username)
     {
         $this->db->where('username', $username);
